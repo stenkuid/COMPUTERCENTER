@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Dashboard Admin — COMPUTERCENTER">
+  <div class="container" style="padding:4rem 1rem; max-width:500px;">
+    <div style="background:#fff; padding:2.5rem; border-radius:24px; box-shadow:0 15px 35px rgba(0,0,0,0.1);">
+      <h1 style="font-size:1.8rem; font-weight:900; color:var(--accent); text-align:center; margin-bottom:0.5rem;">Dashboard Admin</h1>
+      <p style="text-align:center; color:#666; font-size:0.9rem; margin-bottom:2rem;">Login Akun Master COMPUTERCENTER</p>
+      
+      <div id="login-form">
+        <div style="margin-bottom:1.25rem;">
+          <label style="display:block; font-weight:700; margin-bottom:0.5rem;">ID Akun Master</label>
+          <input type="text" id="admin-id" placeholder="COMPUTERCENTER@stenku" style="width:100%; padding:0.75rem 1rem; border:2px solid #ddd; border-radius:12px; font-size:1rem;" />
+        </div>
+        
+        <div style="margin-bottom:1.5rem;">
+          <label style="display:block; font-weight:700; margin-bottom:0.5rem;">Password</label>
+          <input type="password" id="admin-pass" placeholder="••••••••" style="width:100%; padding:0.75rem 1rem; border:2px solid #ddd; border-radius:12px; font-size:1rem;" />
+        </div>
+
+        <button id="login-btn" class="btn" style="width:100%; justify-content:center; padding:0.85rem; font-size:1rem;">Login ke Dashboard</button>
+        <p id="error-msg" style="color:red; text-align:center; margin-top:1rem; display:none; font-weight:700;">ID atau Password Salah!</p>
+      </div>
+
+      <div id="dashboard-panel" style="display:none;">
+        <div style="background:#f0fdf4; border:2px solid #22c55e; color:#15803d; padding:1rem; border-radius:12px; margin-bottom:1.5rem; font-weight:700; text-align:center;">
+          ✓ Login Berhasil sebagai Master Admin (COMPUTERCENTER@stenku)
+        </div>
+
+        <h3 style="margin-bottom:1rem; font-weight:800;">Status Database Cloudflare D1:</h3>
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; padding:1rem; border-radius:12px; font-family:monospace; font-size:0.85rem; margin-bottom:1.5rem;">
+          Binding: env.DB<br/>
+          Database Name: COMPUTERCENTER_PLACEHOLDER_DB<br/>
+          Status: Active Placeholder (D1 Quota Safe)
+        </div>
+
+        <button id="logout-btn" class="btn btn-secondary" style="width:100%; justify-content:center;">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const masterId = "COMPUTERCENTER@stenku";
+    const masterPass = "admin123";
+
+    const loginBtn = document.getElementById('login-btn');
+    const logoutBtn = document.getElementById('logout-btn');
+    const adminIdInput = document.getElementById('admin-id') as HTMLInputElement;
+    const adminPassInput = document.getElementById('admin-pass') as HTMLInputElement;
+    const errorMsg = document.getElementById('error-msg');
+    const loginForm = document.getElementById('login-form');
+    const dashboardPanel = document.getElementById('dashboard-panel');
+
+    loginBtn?.addEventListener('click', () => {
+      if (adminIdInput.value.trim() === masterId && adminPassInput.value.trim() === masterPass) {
+        loginForm!.style.display = 'none';
+        dashboardPanel!.style.display = 'block';
+        errorMsg!.style.display = 'none';
+      } else {
+        errorMsg!.style.display = 'block';
+      }
+    });
+
+    logoutBtn?.addEventListener('click', () => {
+      loginForm!.style.display = 'block';
+      dashboardPanel!.style.display = 'none';
+      adminIdInput.value = '';
+      adminPassInput.value = '';
+    });
+  </script>
+</Layout>

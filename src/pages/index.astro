@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const items = [{"name": "Pro Build Gaming Setup", "price": "Rp 12.500.000", "desc": "Rakit PC Gaming Ryzen/Core + RTX Series siap libas game AAA 1080p/1440p.", "img": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=500&q=80", "badge": "GAMING"}, {"name": "Content Creator Workstation", "price": "Rp 18.900.000", "desc": "Performa kencang 32GB RAM & High-speed SSD untuk rendering 4K cepat.", "img": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=500&q=80", "badge": "CREATOR"}, {"name": "Office & Student Compact PC", "price": "Rp 4.500.000", "desc": "PC hemat daya, efisien, dan responsif untuk tugas belajar dan kerja harian.", "img": "https://images.unsplash.com/photo-1547082297-d19818e69772?w=500&q=80", "badge": "OFFICE"}];
+---
+
+<Layout title="Computer Center — PC Parts & Custom PC Build">
+  <section class="container hero">
+    <div>
+      <h1 class="hero-title">Build Your PC. Your Way.</h1>
+      <p class="hero-desc">Komponen PC, accessories, dan jasa rakit ahli untuk membantu kamu membangun komputer impian yang sesuai kebutuhan dan budget.</p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="#menu" class="btn">Lihat Katalog</a>
+        <a href="#lokasi" class="btn btn-secondary">Informasi Lokasi</a>
+      </div>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80" alt="COMPUTERCENTER Showcase" class="hero-img" />
+    </div>
+  </section>
+
+  <section id="menu" class="section container">
+    <h2 class="section-title">Produk & Layanan Unggulan</h2>
+    <div class="cards-grid">
+      {items.map((item) => (
+        <div class="card">
+          <img src={item.img} alt={item.name} class="card-img" />
+          <div class="card-body">
+            <span class="badge">{item.badge}</span>
+            <h3 class="card-title">{item.name}</h3>
+            <p class="card-desc">{item.desc}</p>
+            <div class="card-footer">
+              <span class="card-price">{item.price}</span>
+              <a href="https://wa.me/?text=Halo%20COMPUTERCENTER,%20saya%20tertarik%20dengan%20" class="btn" style="padding:0.4rem 1rem; font-size:0.85rem;" target="_blank">Pesan</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="lokasi" class="container">
+    <div class="info-box">
+      <h2 class="info-title">Siap Menikmati Layanan COMPUTERCENTER?</h2>
+      <p style="font-size:1.2rem; margin-bottom:2rem; opacity:0.9;">Kunjungi cabang kami atau tanyakan via WhatsApp resmi.</p>
+      <a href="https://wa.me/?text=Halo%20COMPUTERCENTER" class="btn" style="background:#fff; color:var(--accent); font-size:1.1rem; padding:0.9rem 2.2rem;" target="_blank">Hubungi Kami Sekarang</a>
+    </div>
+  </section>
+</Layout>
